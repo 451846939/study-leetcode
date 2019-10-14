@@ -52,7 +52,6 @@ public class Main {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-//        todo
         ListNode res = new ListNode(0);
         int nexttmp = 0;
         ListNode t = res;
