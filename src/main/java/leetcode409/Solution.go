@@ -44,3 +44,20 @@ func longestPalindrome(s string) int {
 	}
 	return count
 }
+func longestPalindrome2(s string) int {
+	//counts := make(map[uint8]int, len(s))
+	counts := make([]int, 58)
+	for i := range s {
+		//counts[s[i]]++
+		counts[s[i]-'A']++
+	}
+	count := 0
+	for _, v := range counts {
+		count += v >> 1 << 1
+	}
+	//s如果是奇数count也是奇数，s是偶数count也是偶数就直接返回，否则说明有奇数加一即可
+	if count == len(s) {
+		return count
+	}
+	return count + 1
+}
