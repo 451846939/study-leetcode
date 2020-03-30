@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 0,1,,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。
 
@@ -27,7 +29,7 @@ package main
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 func main() {
-
+	fmt.Println(lastRemaining2(5, 2))
 }
 func lastRemaining(n int, m int) int {
 	f := 0
@@ -35,4 +37,22 @@ func lastRemaining(n int, m int) int {
 		f = (m + f) % i
 	}
 	return f
+}
+func lastRemaining2(n int, m int) int {
+	ints := make([]int, n)
+	for i := range ints {
+		ints[i] = i
+	}
+	index := 0
+	for len(ints) != 1 {
+		index = (m - 1 + index) % len(ints)
+		if index == 0 {
+			ints = append(ints[index+1:])
+		} else if index+1 > len(ints)-1 {
+			ints = append(ints[:index])
+		} else {
+			ints = append(ints[:index], ints[index+1:]...)
+		}
+	}
+	return ints[0]
 }
