@@ -70,6 +70,7 @@ func rotate2(matrix [][]int) {
 	n := len(matrix)
 	for i := 0; i < n>>1; i++ {
 		for j := 0; j < (n+1)>>1; j++ {
+			//分成4份小矩阵，以小矩阵为单位集体交换4次 旋转一次对应改变的所有值
 			tmp := matrix[i][j]
 			matrix[i][j] = matrix[n-1-j][i]
 			matrix[n-1-j][i] = matrix[n-1-i][n-1-j]
