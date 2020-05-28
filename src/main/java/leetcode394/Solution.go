@@ -32,13 +32,14 @@ func decodeString(s string) string {
 	numStack := make([]int64, 0)
 	stringStack := make([]string, 0)
 	runes := []rune(s)
-	num := 0
+	num := ""
 	for j := 0; j < len(runes); j++ {
 		if runes[j] >= '0' && runes[j] <= '9' {
-			n, _ := strconv.ParseInt(string(runes[j]), 10, 32)
-			num = num*10 + n
-			numStack = append(numStack, n)
+			num += string(runes[j])
 		} else if runes[j] == '[' {
+			n, _ := strconv.ParseInt(num, 10, 32)
+			numStack = append(numStack, n)
+			num = ""
 			stringStack = append(stringStack, res)
 			res = ""
 		} else if runes[j] == ']' {
