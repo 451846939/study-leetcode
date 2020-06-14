@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"sort"
 )
 
@@ -39,7 +40,11 @@ import (
 */
 func main() {
 	//findBestValue([]int{4,9,3},10)
-	findBestValue([]int{5, 9, 3}, 10)
+	//findBestValue([]int{5, 9, 3}, 10)
+	//findBestValue2([]int{1547,83230,57084,93444,70879}, 71237)
+	fmt.Println(float64(10 / 3))
+	fmt.Println(float64(float64(10) / float64(3)))
+	fmt.Println(10 / 3)
 }
 func findBestValue(arr []int, target int) int {
 	if arr == nil {
@@ -52,6 +57,7 @@ func findBestValue(arr []int, target int) int {
 		x := (target - sum) / (arrSize - i)
 		if x < arr[i] {
 			t := float64(target-sum) / float64(arrSize-i)
+			//5舍 0.5不可以进 6入
 			if t-float64(x) > 0.5 {
 				return x + 1
 			} else {
