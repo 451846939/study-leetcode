@@ -43,6 +43,22 @@ type TreeNode struct {
 }
 
 func flatten(root *TreeNode) {
+	cur := root
+	for cur != nil {
+		if cur.Left != nil {
+			next := cur.Left
+			p := next
+			for p.Right != nil {
+				p = p.Right
+			}
+			p.Right = cur.Right
+			cur.Left = next
+			cur.Right = next
+		}
+		cur = cur.Right
+	}
+}
+func flatten2(root *TreeNode) {
 	list := preorderTraversal(root)
 	for i := 1; i < len(list); i++ {
 		prev, curr := list[i-1], list[i]
