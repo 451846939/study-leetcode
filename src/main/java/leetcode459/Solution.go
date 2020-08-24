@@ -46,6 +46,7 @@ func repeatedSubstringPattern2(s string) bool {
 }
 
 func kmp(query string, pattern string) bool {
+	//kmp
 	n, m := len(query), len(pattern)
 	fail := make([]int, m)
 	for i := 0; i < m; i++ {
