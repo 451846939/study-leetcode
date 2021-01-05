@@ -1,2 +1,2 @@
-# study-leetcode
+# leetcode-solution
 About leetcode solution
